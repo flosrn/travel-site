@@ -1,5 +1,5 @@
 var $ = require('jquery');
-import Person from './modules/Person';
+import Person from './modules/Person';  
 
 class Adult extends Person {
   payTaxes() {

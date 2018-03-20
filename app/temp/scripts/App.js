@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -68,7 +68,7 @@
 	  function Adult() {
 	    _classCallCheck(this, Adult);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Adult).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Adult.__proto__ || Object.getPrototypeOf(Adult)).apply(this, arguments));
 	  }
 
 	  _createClass(Adult, [{
@@ -92,9 +92,9 @@
 
 	$("h1").remove();
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -126,9 +126,9 @@
 
 	exports.default = Person;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jQuery JavaScript Library v2.2.4
@@ -9946,5 +9946,5 @@
 	}));
 
 
-/***/ }
+/***/ })
 /******/ ]);
