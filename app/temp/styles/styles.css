@@ -439,6 +439,17 @@ a {
   color: #d59541;
 }
 
+.reveal-item {
+  opacity: 0;
+  transition: all 1.5s ease-out;
+  transform: scale(1.15);
+}
+
+.reveal-item--is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .large-hero {
   border-bottom: 10px solid #2f5572;
   position: relative;
