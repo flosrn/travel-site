@@ -2,6 +2,7 @@
 @import "base/_variables";
 @import "base/_mixins";
 @import "base/_global";
+@import "modules/_reveal-item";
 @import "modules/_large-hero";
 @import "modules/_btn";
 @import "modules/_wrapper";
