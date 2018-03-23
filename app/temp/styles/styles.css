@@ -1124,12 +1124,24 @@ Instead edit gulp/templates/sprite */
 
 .site-header__menu-icon {
   width: 20px;
-  height: 20px;
-  background-color: #FFF;
+  height: 19px;
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 10;
+}
+
+.site-header__menu-icon--close-x::before {
+  transform: rotate(45deg) scaleX(1.25);
+}
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.site-header__menu-icon--close-x::after {
+  transform: rotate(-45deg) scaleX(1.25) translateY(1px);
 }
 
 @media (min-width: 800px) {
@@ -1137,6 +1149,41 @@ Instead edit gulp/templates/sprite */
   .site-header__menu-icon {
     display: none;
   }
+}
+
+.site-header__menu-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: #FFF;
+  transform-origin: 0 0;
+  transition: transform .3s ease-out;
+}
+
+.site-header__menu-icon__middle {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: #FFF;
+  transition: all .3s ease-out;
+  transform-origin: 0 50%;
+}
+
+.site-header__menu-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: #FFF;
+  transform-origin: 0 100%;
+  transition: transform .3s ease-out;
 }
 
 .site-header__menu-content {
