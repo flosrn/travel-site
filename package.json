@@ -24,6 +24,7 @@
     "postcss-mixins": "^4.0.2",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.2.0",
+    "stylelint-config-recommended": "^2.1.0",
     "webpack": "^1.13.1"
   }
 }
