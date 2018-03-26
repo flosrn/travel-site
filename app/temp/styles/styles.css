@@ -1382,6 +1382,10 @@ Instead edit gulp/templates/sprite */
   position: relative;
 }
 
+.social-icons__icon:hover {
+  background-color: #2f5572;
+}
+
 @media (min-width: 530px) {
 
   .social-icons__icon {
