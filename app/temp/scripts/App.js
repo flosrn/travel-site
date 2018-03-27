@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -54,6 +54,10 @@
 
 	var _RevealOnScroll2 = _interopRequireDefault(_RevealOnScroll);
 
+	var _jquery = __webpack_require__(2);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	var _StickyHeader = __webpack_require__(5);
 
 	var _StickyHeader2 = _interopRequireDefault(_StickyHeader);
@@ -62,22 +66,17 @@
 
 	var _Modal2 = _interopRequireDefault(_Modal);
 
-	var _jquery = __webpack_require__(2);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mobileMenu = new _MobileMenu2.default();
 	new _RevealOnScroll2.default((0, _jquery2.default)(".feature-item"), "85%");
 	new _RevealOnScroll2.default((0, _jquery2.default)(".testimonial"), "60%");
-
 	var stickyHeader = new _StickyHeader2.default();
 	var modal = new _Modal2.default();
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -124,9 +123,9 @@
 
 	exports.default = MobileMenu;
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jQuery JavaScript Library v2.2.4
@@ -9944,9 +9943,9 @@
 	}));
 
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -9969,10 +9968,10 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var RevealOnScroll = function () {
-	  function RevealOnScroll(element, offset) {
+	  function RevealOnScroll(els, offset) {
 	    _classCallCheck(this, RevealOnScroll);
 
-	    this.itemsToReveal = element;
+	    this.itemsToReveal = els;
 	    this.offsetPercentage = offset;
 	    this.hideInitially();
 	    this.createWaypoints();
@@ -10005,15 +10004,15 @@
 
 	exports.default = RevealOnScroll;
 
-/***/ }),
+/***/ },
 /* 4 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	/*!
-	Waypoints - 4.0.1
-	Copyright © 2011-2016 Caleb Troughton
+	Waypoints - 4.0.0
+	Copyright © 2011-2015 Caleb Troughton
 	Licensed under the MIT license.
-	https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
+	https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 	*/
 	(function() {
 	  'use strict'
@@ -10132,11 +10131,7 @@
 	  /* Public */
 	  /* http://imakewebthings.com/waypoints/api/enable-all */
 	  Waypoint.enableAll = function() {
-	    Waypoint.Context.refreshAll()
-	    for (var waypointKey in allWaypoints) {
-	      allWaypoints[waypointKey].enabled = true
-	    }
-	    return this
+	    Waypoint.invokeAll('enable')
 	  }
 
 	  /* Public */
@@ -10211,10 +10206,6 @@
 	    element.waypointContextKey = this.key
 	    contexts[element.waypointContextKey] = this
 	    keyCounter += 1
-	    if (!Waypoint.windowContext) {
-	      Waypoint.windowContext = true
-	      Waypoint.windowContext = new Context(window)
-	    }
 
 	    this.createThrottledScrollHandler()
 	    this.createThrottledResizeHandler()
@@ -10231,8 +10222,7 @@
 	  Context.prototype.checkEmpty = function() {
 	    var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
 	    var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
-	    var isWindow = this.element == this.element.window
-	    if (horizontalEmpty && verticalEmpty && !isWindow) {
+	    if (horizontalEmpty && verticalEmpty) {
 	      this.adapter.off('.waypoints')
 	      delete contexts[this.key]
 	    }
@@ -10301,9 +10291,6 @@
 
 	      for (var waypointKey in this.waypoints[axisKey]) {
 	        var waypoint = this.waypoints[axisKey][waypointKey]
-	        if (waypoint.triggerPoint === null) {
-	          continue
-	        }
 	        var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
 	        var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
 	        var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
@@ -10423,7 +10410,7 @@
 	        }
 
 	        contextModifier = axis.contextScroll - axis.contextOffset
-	        waypoint.triggerPoint = Math.floor(elementOffset + contextModifier - adjustment)
+	        waypoint.triggerPoint = elementOffset + contextModifier - adjustment
 	        wasBeforeScroll = oldTriggerPoint < axis.oldScroll
 	        nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
 	        triggeredBackward = wasBeforeScroll && nowAfterScroll
@@ -10477,7 +10464,6 @@
 	    }
 	    Context.refreshAll()
 	  }
-
 
 	  Waypoint.requestAnimationFrame = function(callback) {
 	    var requestFn = window.requestAnimationFrame ||
@@ -10768,9 +10754,9 @@
 	}())
 	;
 
-/***/ }),
+/***/ },
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -10814,7 +10800,7 @@
 	  _createClass(StickyHeader, [{
 	    key: 'refreshWaypoints',
 	    value: function refreshWaypoints() {
-	      this.lazyImages.on('load', function () {
+	      this.lazyImages.load(function () {
 	        Waypoint.refreshAll();
 	      });
 	    }
@@ -10876,14 +10862,14 @@
 
 	exports.default = StickyHeader;
 
-/***/ }),
+/***/ },
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	 * jQuery Smooth Scroll - v2.2.0 - 2017-05-05
+	 * jQuery Smooth Scroll - v2.0.0 - 2016-07-31
 	 * https://github.com/kswedberg/jquery-smooth-scroll
-	 * Copyright (c) 2017 Karl Swedberg
+	 * Copyright (c) 2016 Karl Swedberg
 	 * Licensed MIT
 	 */
 
@@ -10900,7 +10886,7 @@
 	  }
 	}(function($) {
 
-	  var version = '2.2.0';
+	  var version = '2.0.0';
 	  var optionOverrides = {};
 	  var defaults = {
 	    exclude: [],
@@ -10920,9 +10906,6 @@
 
 	    // only use if you want to override default behavior
 	    scrollTarget: null,
-
-	    // automatically focus the target element after scrolling to it
-	    autoFocus: false,
 
 	    // fn(opts) function to be called before scrolling occurs.
 	    // `this` is the element(s) being scrolled
@@ -11008,8 +10991,6 @@
 
 	    return scrollable;
 	  };
-
-	  var rRelative = /^([\-\+]=)(\d+)/;
 
 	  $.fn.extend({
 	    scrollable: function(dir) {
@@ -11109,50 +11090,20 @@
 	    }
 	  });
 
-	  var getExplicitOffset = function(val) {
-	    var explicit = {relative: ''};
-	    var parts = typeof val === 'string' && rRelative.exec(val);
-
-	    if (typeof val === 'number') {
-	      explicit.px = val;
-	    } else if (parts) {
-	      explicit.relative = parts[1];
-	      explicit.px = parseFloat(parts[2]) || 0;
-	    }
-
-	    return explicit;
-	  };
-
-	  var onAfterScroll = function(opts) {
-	    var $tgt = $(opts.scrollTarget);
-
-	    if (opts.autoFocus && $tgt.length) {
-	      $tgt[0].focus();
-
-	      if (!$tgt.is(document.activeElement)) {
-	        $tgt.prop({tabIndex: -1});
-	        $tgt[0].focus();
-	      }
-	    }
-
-	    opts.afterScroll.call(opts.link, opts);
-	  };
-
 	  $.smoothScroll = function(options, px) {
 	    if (options === 'options' && typeof px === 'object') {
 	      return $.extend(optionOverrides, px);
 	    }
-	    var opts, $scroller, speed, delta;
-	    var explicitOffset = getExplicitOffset(options);
-	    var scrollTargetOffset = {};
+	    var opts, $scroller, scrollTargetOffset, speed, delta;
 	    var scrollerOffset = 0;
 	    var offPos = 'offset';
 	    var scrollDir = 'scrollTop';
 	    var aniProps = {};
 	    var aniOpts = {};
 
-	    if (explicitOffset.px) {
+	    if (typeof options === 'number') {
 	      opts = $.extend({link: null}, $.fn.smoothScroll.defaults, optionOverrides);
+	      scrollTargetOffset = options;
 	    } else {
 	      opts = $.extend({link: null}, $.fn.smoothScroll.defaults, options || {}, optionOverrides);
 
@@ -11163,10 +11114,6 @@
 	          opts.scrollElement.css('position', 'relative');
 	        }
 	      }
-
-	      if (px) {
-	        explicitOffset = getExplicitOffset(px);
-	      }
 	    }
 
 	    scrollDir = opts.direction === 'left' ? 'scrollLeft' : scrollDir;
@@ -11174,7 +11121,7 @@
 	    if (opts.scrollElement) {
 	      $scroller = opts.scrollElement;
 
-	      if (!explicitOffset.px && !(/^(?:HTML|BODY)$/).test($scroller[0].nodeName)) {
+	      if (!(/^(?:HTML|BODY)$/).test($scroller[0].nodeName)) {
 	        scrollerOffset = $scroller[scrollDir]();
 	      }
 	    } else {
@@ -11184,13 +11131,13 @@
 	    // beforeScroll callback function must fire before calculating offset
 	    opts.beforeScroll.call($scroller, opts);
 
-	    scrollTargetOffset = explicitOffset.px ? explicitOffset : {
-	      relative: '',
-	      px: ($(opts.scrollTarget)[offPos]() && $(opts.scrollTarget)[offPos]()[opts.direction]) || 0
-	    };
+	    scrollTargetOffset = (typeof options === 'number') ? options :
+	                          px ||
+	                          ($(opts.scrollTarget)[offPos]() &&
+	                          $(opts.scrollTarget)[offPos]()[opts.direction]) ||
+	                          0;
 
-	    aniProps[scrollDir] = scrollTargetOffset.relative + (scrollTargetOffset.px + scrollerOffset + opts.offset);
-
+	    aniProps[scrollDir] = scrollTargetOffset + scrollerOffset + opts.offset;
 	    speed = opts.speed;
 
 	    // automatically calculate the speed of the scroll based on distance / coefficient
@@ -11208,7 +11155,7 @@
 	      duration: speed,
 	      easing: opts.easing,
 	      complete: function() {
-	        onAfterScroll(opts);
+	        opts.afterScroll.call(opts.link, opts);
 	      }
 	    };
 
@@ -11219,7 +11166,7 @@
 	    if ($scroller.length) {
 	      $scroller.stop().animate(aniProps, aniOpts);
 	    } else {
-	      onAfterScroll(opts);
+	      opts.afterScroll.call(opts.link, opts);
 	    }
 	  };
 
@@ -11240,9 +11187,9 @@
 
 
 
-/***/ }),
+/***/ },
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -11276,11 +11223,18 @@
 	      // clicking the open modal button
 	      this.openModalButton.click(this.openModal.bind(this));
 
-	      // clicking the X close modal button
+	      // clicking the x close modal button
 	      this.closeModalButton.click(this.closeModal.bind(this));
 
 	      // pushes any key
 	      (0, _jquery2.default)(document).keyup(this.keyPressHandler.bind(this));
+	    }
+	  }, {
+	    key: "keyPressHandler",
+	    value: function keyPressHandler(e) {
+	      if (e.keyCode == 27) {
+	        this.closeModal();
+	      }
 	    }
 	  }, {
 	    key: "openModal",
@@ -11292,14 +11246,6 @@
 	    key: "closeModal",
 	    value: function closeModal() {
 	      this.modal.removeClass("modal--is-visible");
-	      return false;
-	    }
-	  }, {
-	    key: "keyPressHandler",
-	    value: function keyPressHandler(e) {
-	      if (e.keyCode == 27) {
-	        this.closeModal();
-	      }
 	    }
 	  }]);
 
@@ -11308,5 +11254,5 @@
 
 	exports.default = Modal;
 
-/***/ })
+/***/ }
 /******/ ]);
