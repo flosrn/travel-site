@@ -2,15 +2,13 @@
 
 /**
  * 1. Change the default font family in all browsers (opinionated).
- * 2. Correct the line height in all browsers.
- * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
 html {
   font-family: sans-serif; /* 1 */
-  line-height: 1.15; /* 2 */
-  -ms-text-size-adjust: 100%; /* 3 */
-  -webkit-text-size-adjust: 100%; /* 3 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -258,7 +256,6 @@ hr {
 
 button,
 input,
-optgroup,
 select,
 textarea {
   font: inherit; /* 1 */
@@ -439,17 +436,6 @@ a {
   color: #d59541;
 }
 
-.reveal-item {
-  opacity: 0;
-  transition: all 1.5s ease-out;
-  transform: scale(1.15);
-}
-
-.reveal-item--is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .large-hero {
   border-bottom: 10px solid #2f5572;
   position: relative;
@@ -464,7 +450,8 @@ a {
   padding-top: 88px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   left: 0;
   width: 100%;
   text-align: center;
@@ -818,6 +805,8 @@ a {
 @media (min-width: 800px) {
 
   .row--equal-height-at-medium {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
   }
@@ -825,6 +814,8 @@ a {
 
 .row--equal-height-at-medium > div {
   float: none;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
@@ -832,6 +823,8 @@ a {
 @media (min-width: 1010px) {
 
   .row--equal-height-at-large {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
   }
@@ -839,6 +832,8 @@ a {
 
 .row--equal-height-at-large > div {
   float: none;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
@@ -1099,6 +1094,7 @@ Instead edit gulp/templates/sprite */
   position: absolute;
   width: 100%;
   z-index: 2;
+  -webkit-transition: background-color .3s ease-out;
   transition: background-color .3s ease-out;
 }
 
@@ -1129,9 +1125,14 @@ Instead edit gulp/templates/sprite */
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%) scale(.8);
+  -webkit-transform: translateX(-50%) scale(.8);
+          transform: translateX(-50%) scale(.8);
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
   transition: transform .3s ease-out;
-  transform-origin: 50% 0;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
   background-color: #2f5572;
   padding: 25px 36px;
 }
@@ -1140,11 +1141,13 @@ Instead edit gulp/templates/sprite */
 
   .site-header__logo {
     left: auto;
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 
   .site-header--dark .site-header__logo {
-    transform: scale(.56);
+    -webkit-transform: scale(.57);
+            transform: scale(.57);
   }
 }
 
@@ -1156,29 +1159,9 @@ Instead edit gulp/templates/sprite */
   width: 20px;
   height: 19px;
   position: absolute;
+  z-index: 10;
   top: 10px;
   right: 10px;
-  z-index: 10;
-}
-
-.site-header__menu-icon--close-x::before {
-  transform: rotate(45deg) scaleX(1.25);
-}
-
-.site-header__menu-icon--close-x .site-header__menu-icon__middle {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.site-header__menu-icon--close-x::after {
-  transform: rotate(-45deg) scaleX(1.25) translateY(1px);
-}
-
-@media (min-width: 800px) {
-
-  .site-header__menu-icon {
-    display: none;
-  }
 }
 
 .site-header__menu-icon::before {
@@ -1189,8 +1172,12 @@ Instead edit gulp/templates/sprite */
   width: 20px;
   height: 3px;
   background-color: #FFF;
-  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
   transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
 }
 
 .site-header__menu-icon__middle {
@@ -1200,8 +1187,10 @@ Instead edit gulp/templates/sprite */
   width: 20px;
   height: 3px;
   background-color: #FFF;
+  -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
-  transform-origin: 0 50%;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
 }
 
 .site-header__menu-icon::after {
@@ -1212,16 +1201,45 @@ Instead edit gulp/templates/sprite */
   width: 20px;
   height: 3px;
   background-color: #FFF;
-  transform-origin: 0 100%;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
   transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+
+@media (min-width: 800px) {
+
+  .site-header__menu-icon {
+    display: none;
+  }
+}
+
+.site-header__menu-icon--close-x::before {
+  -webkit-transform: rotate(45deg) scaleX(1.25);
+          transform: rotate(45deg) scaleX(1.25);
+}
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+  opacity: 0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+
+.site-header__menu-icon--close-x::after {
+  -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+          transform: rotate(-45deg) scaleX(1.25) translateY(1px);
 }
 
 .site-header__menu-content {
   opacity: 0;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
-  transform: scale(1.4);
-  z-index: -10;
   position: relative;
+  z-index: -10;
   padding-top: 90px;
   text-align: center;
 }
@@ -1230,16 +1248,18 @@ Instead edit gulp/templates/sprite */
 
   .site-header__menu-content {
     opacity: 1;
-    transform: scale(1);
     z-index: 1;
     padding-top: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 .site-header__menu-content--is-visible {
   opacity: 1;
-  transform: scale(1);
   z-index: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .primary-nav {
@@ -1311,13 +1331,27 @@ Instead edit gulp/templates/sprite */
 
   .primary-nav a {
     font-size: 1rem;
-    background-color: transparent;
     padding: 12px 0;
+    background-color: transparent;
   }
 
   .primary-nav a.is-current-link {
     color: #fabb69;
   }
+}
+
+.reveal-item {
+  opacity: 0;
+  -webkit-transition: all 1.5s ease-out;
+  transition: all 1.5s ease-out;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+.reveal-item--is-visible {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .modal {
@@ -1330,28 +1364,32 @@ Instead edit gulp/templates/sprite */
   right: 0;
   opacity: 0;
   visibility: hidden;
-  transform: scaleX(1.2);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
 
 .modal--is-visible {
   opacity: 1;
   visibility: visible;
-  transform: scaleX(1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .modal__inner {
   position: absolute;
   width: 100%;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .modal__description {
   text-align: center;
   font-size: 1.3rem;
   font-weight: 300;
-  line-weight: 1.65;
+  line-height: 1.65;
 }
 
 .modal__close {
@@ -1359,8 +1397,10 @@ Instead edit gulp/templates/sprite */
   top: 15px;
   right: 15px;
   font-size: 2rem;
-  transform: scaleX(1.2);
-  transform-origin: 100% 0;
+  -webkit-transform: scaleX(1.2);
+          transform: scaleX(1.2);
+  -webkit-transform-origin: 100% 0;
+          transform-origin: 100% 0;
   color: #2f5572;
   cursor: pointer;
 }
@@ -1382,10 +1422,6 @@ Instead edit gulp/templates/sprite */
   position: relative;
 }
 
-.social-icons__icon:hover {
-  background-color: #2f5572;
-}
-
 @media (min-width: 530px) {
 
   .social-icons__icon {
@@ -1399,5 +1435,6 @@ Instead edit gulp/templates/sprite */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }

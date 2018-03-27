@@ -8,13 +8,13 @@
   right: 0;
   opacity: 0;
   visibility: hidden;
-  transform: scaleX(1.2);
+  transform: scale(1.2);
   transition: all .3s ease-out;
 
   &--is-visible {
     opacity: 1;
     visibility: visible;
-    transform: scaleX(1);
+    transform: scale(1);
   }
 
   &__inner {
@@ -28,7 +28,7 @@
     text-align: center;
     font-size: 1.3rem;
     font-weight: 300;
-    line-weight: 1.65;
+    line-height: 1.65;
   }
 
   &__close {
@@ -39,7 +39,6 @@
     transform: scaleX(1.2);
     transform-origin: 100% 0;
     color: $mainBlue;
-
     cursor: pointer;
 
     &:hover {

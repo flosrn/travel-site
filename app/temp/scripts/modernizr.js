@@ -1,6 +1,11 @@
 /*!
+<<<<<<< HEAD
  * modernizr v3.6.0
  * Build https://modernizr.com/download?-svg-addtest-fnbind-printshiv-testprop-dontmin
+=======
+ * modernizr v3.3.1
+ * Build http://modernizr.com/download?-svg-setclasses-dontmin
+>>>>>>> master
  *
  * Copyright (c)
  *  Faruk Ates
@@ -36,7 +41,11 @@
 
   var ModernizrProto = {
     // The current version, dummy
+<<<<<<< HEAD
     _version: '3.6.0',
+=======
+    _version: '3.3.1',
+>>>>>>> master
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -159,6 +168,10 @@
             Modernizr[featureNameSplit[0]] = result;
           } else {
             // cast to a Boolean, if not one already
+<<<<<<< HEAD
+=======
+            /* jshint -W053 */
+>>>>>>> master
             if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
               Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
             }
@@ -174,6 +187,7 @@
   ;
 
   /**
+<<<<<<< HEAD
    * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
    *
    * @author kangax
@@ -207,6 +221,8 @@
   
 
   /**
+=======
+>>>>>>> master
    * docElement is a convenience wrapper to grab the root element of the document
    *
    * @access private
@@ -254,16 +270,21 @@
     if (Modernizr._config.enableClasses) {
       // Add the new classes
       className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+<<<<<<< HEAD
       if (isSVG) {
         docElement.className.baseVal = className;
       } else {
         docElement.className = className;
       }
+=======
+      isSVG ? docElement.className.baseVal = className : docElement.className = className;
+>>>>>>> master
     }
 
   }
 
   ;
+<<<<<<< HEAD
 
 
    // _l tracks listeners for async tests, as well as tests that execute after the initial run
@@ -1443,6 +1464,8 @@
   }
 
   ;
+=======
+>>>>>>> master
 /*!
 {
   "name": "SVG",
@@ -1472,6 +1495,12 @@ Detects support for SVG in `<embed>` or `<object>` elements.
   // Run each test
   testRunner();
 
+<<<<<<< HEAD
+=======
+  // Remove the "no-js" class if it exists
+  setClasses(classes);
+
+>>>>>>> master
   delete ModernizrProto.addTest;
   delete ModernizrProto.addAsyncTest;
 
