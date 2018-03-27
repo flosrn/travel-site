@@ -26,8 +26,8 @@ gulp.task('createSprite', ['beginClean'], function() {
     .pipe(gulp.dest('./app/temp/sprite/'));
 });
 
-gulp.task('copySpriteGraphic', function() {
-  return gulp.src('./app/temp/sprite/css/**/*.{svg,png}')
+gulp.task('copySpriteGraphic', ['createSprite'], function() {
+  return gulp.src('./app/temp/sprite/css/**/*.svg')
     .pipe(gulp.dest('./app/assets/images/sprites'));
 });
 
