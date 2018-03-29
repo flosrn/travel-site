@@ -1390,6 +1390,10 @@ Instead edit gulp/templates/sprite */
   }
 }
 
+.social-icons__icon:hover {
+  background-color: #2f5572;
+}
+
 .social-icons__icon .icon {
   display: block;
   position: absolute;
